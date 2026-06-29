@@ -5,9 +5,19 @@ import openai from "../configs/openai.js";
 // Controller Function to make Revsion
 
 export const makeRevision = async (req: Request, res: Response)=>{
+    console.log("=== makeRevision called ===");
+
     const userId = req.userId;
+    
+    
     try {
+
+        console.log(req.params);
+
         const { projectId } = req.params;
+        console.log(projectId);
+
+        // const { projectId } = req.params;
         const {message} = req.body;
 
         const user = await prisma.user.findUnique({
@@ -49,7 +59,7 @@ export const makeRevision = async (req: Request, res: Response)=>{
 
         // Enhance user prompt
         const promptEnhanceResponse = await openai.chat.completions.create({
-            model: 'z-ai/glm-4.5-air:free',
+            model: 'openai/gpt-oss-120b:free',
             messages:[
                 {
                     role: 'system',
@@ -91,7 +101,7 @@ export const makeRevision = async (req: Request, res: Response)=>{
         // Generate website code
 
         const codeGenerationResponse = await openai.chat.completions.create({
-            model: 'z-ai/glm-4.5-air:free',
+            model: 'openai/gpt-oss-120b:free',
             messages:[
                 {
                     role: 'system',
@@ -117,6 +127,21 @@ export const makeRevision = async (req: Request, res: Response)=>{
         })
 
         const code = codeGenerationResponse.choices[0].message.content || '';
+
+        if(!code){
+            await prisma.conversation.create({
+            data:{
+                role: 'assistant',
+                content: "Unable to generate the code, please try again",
+                projectId
+            }
+        })
+        await prisma.user.update({
+            where: {id: userId},
+            data: {credits: {increment: 5}}
+        })
+        return;
+        }
 
         const version = await prisma.version.create({
             data:{
@@ -178,7 +203,7 @@ export const rollbackToVersion = async (req: Request, res: Response)=>{
         return res.status(404).json({message: 'Project not found'})
     }
 
-    const version = project.version.find((version)=>version.id === versionId);
+    const version = project.versions.find((version)=>version.id === versionId);
 
     if(!version){
         return res.status(404).json({message: 'version not found'})
