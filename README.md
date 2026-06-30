@@ -52,27 +52,45 @@ An AI-powered full-stack website builder that enables users to generate, edit, p
 
 # 📁 Project Structure
 
+# 📁 Project Structure
+
 ```
 AI-Site-Builder/
 │
 ├── client/
-│   ├── src/
 │   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── configs/
+│   │   ├── lib/
+│   │   ├── pages/
+│   │   ├── types/
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   └── providers.tsx
+│   ├── .env
 │   ├── package.json
+│   ├── tsconfig.json
+│   ├── vite.config.ts
 │   └── README.md
 │
 ├── server/
+│   ├── configs/
 │   ├── controllers/
-│   ├── routes/
+│   ├── lib/
 │   ├── middlewares/
 │   ├── prisma/
-│   ├── configs/
-│   ├── lib/
+│   ├── routes/
+│   ├── types/
 │   ├── server.ts
 │   ├── package.json
 │   └── README.md
 │
-└── README.md
+├── README.md
+└── .gitignore
+
 ```
 
 ---
