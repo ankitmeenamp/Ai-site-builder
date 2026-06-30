@@ -238,31 +238,9 @@ npm start
 
 ---
 
-# 📸 Screenshots
 
-### Home Page
 
-<img width="1264" height="583" alt="image" src="https://github.com/user-attachments/assets/f3549206-bdac-4e7d-965d-bd767bfe9ecc" />
 
----
-
-### Dashboard
-
-_Add screenshot here_
-
----
-
-### AI Editor
-
-_Add screenshot here_
-
----
-
-### Preview
-
-_Add screenshot here_
-
----
 
 # 🔮 Future Improvements
 
