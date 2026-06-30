@@ -52,8 +52,6 @@ An AI-powered full-stack website builder that enables users to generate, edit, p
 
 # 📁 Project Structure
 
-# 📁 Project Structure
-
 ```
 AI-Site-Builder/
 │
