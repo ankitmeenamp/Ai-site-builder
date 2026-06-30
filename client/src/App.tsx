@@ -12,6 +12,7 @@ import Community from "./pages/Cummunity";
 import { Toaster } from "sonner";
 import Authpage from "./pages/auth/AuthPage";
 import Settings from "./pages/Settings";
+import Loading from "./pages/Loading";
 
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/view/:projectId" element={<View />} />
         <Route path="/auth/:pathname" element={<Authpage />} />
-        <Route path="/account/settings" element={<Settings/>} />
+        <Route path="/account/settings" element={<Settings />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
     </div>
   );
