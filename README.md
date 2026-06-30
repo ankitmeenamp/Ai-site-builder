@@ -242,7 +242,7 @@ npm start
 
 ### Home Page
 
-_Add screenshot here_
+<img width="1264" height="583" alt="image" src="https://github.com/user-attachments/assets/f3549206-bdac-4e7d-965d-bd767bfe9ecc" />
 
 ---
 
